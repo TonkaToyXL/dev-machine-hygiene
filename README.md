@@ -1,6 +1,7 @@
 # dev-machine-hygiene
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![CI](https://github.com/TonkaToyXL/dev-machine-hygiene/actions/workflows/ci.yml/badge.svg)](https://github.com/TonkaToyXL/dev-machine-hygiene/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue)](./machine_hygiene_scan.py)
 [![Bash](https://img.shields.io/badge/Bash-5.0+-green)](./forgeguard-scan.sh)
 
