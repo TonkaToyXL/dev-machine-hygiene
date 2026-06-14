@@ -1,5 +1,9 @@
 # dev-machine-hygiene
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue)](./machine_hygiene_scan.py)
+[![Bash](https://img.shields.io/badge/Bash-5.0+-green)](./forgeguard-scan.sh)
+
 Read-only scanners and reversible cleanup helpers for local dev machines.
 
 Turn messy folders, orphan caches, and broken symlinks into a reviewable report — without auto-deleting anything.
