@@ -1,55 +1,46 @@
-# dev-machine-hygiene
+# Dev Machine Hygiene
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![CI](https://github.com/TonkaToyXL/dev-machine-hygiene/actions/workflows/ci.yml/badge.svg)](https://github.com/TonkaToyXL/dev-machine-hygiene/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue)](./machine_hygiene_scan.py)
-[![Bash](https://img.shields.io/badge/Bash-5.0+-green)](./forgeguard-scan.sh)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue)](./hygiene_scan.py)
+[![Bash](https://img.shields.io/badge/Bash-5.0+-green)](./hygiene-scan.sh)
 
 Read-only scanners and reversible cleanup helpers for local dev machines.
 
-Turn messy folders, orphan caches, and broken symlinks into a reviewable report — without auto-deleting anything.
-
 ## Tools
 
-### Machine hygiene scan (read-only)
+| Script | Mode | Purpose |
+|--------|------|---------|
+| `hygiene_scan.py` | read-only | Full report: caches, orphans, symlinks, large files |
+| `hygiene-scan.sh` | read-only | Quick monthly pass: empty dirs, venvs, staging bloat |
+| `hygiene-cleanup.sh` | dry-run / `--execute` | Archive-first moves — never auto-deletes |
+
+### Full scan
 
 ```bash
-python3 machine_hygiene_scan.py
+python3 hygiene_scan.py
 ```
 
-Reports:
+Reports project-like folders outside `~/Projects`, rebuildable caches, broken symlinks, LaunchAgent failures, and large files (≥ 500 MB).
 
-- Project-like folders outside `~/Projects`
-- Rebuildable cache candidates (`node_modules`, `.venv`, `.pytest_cache`, etc.)
-- Active runtime caches to leave alone
-- Orphan signals and broken symlinks
-- LaunchAgent failures under `~/Library/LaunchAgents`
-- Large files on Desktop, Downloads, and Movies (>= 500MB)
-
-### ForgeGuard scan (read-only)
+### Quick scan
 
 ```bash
-./forgeguard-scan.sh
+./hygiene-scan.sh
 ```
 
-Quick monthly pass for empty dirs, orphan venvs, broken symlinks, Codex staging bloat, and stray installers.
-
-### ForgeGuard cleanup (dry-run by default)
+### Cleanup
 
 ```bash
-./forgeguard-cleanup.sh           # preview only
-./forgeguard-cleanup.sh --execute # archive-first moves
+./hygiene-cleanup.sh           # preview
+./hygiene-cleanup.sh --execute # archive-first moves
 ```
 
-Default rule: **archive first, trash second, delete only after manual review.**
+Rule: **archive first, review, then delete manually.**
 
-## Project bootstrap templates
+## Bootstrap templates
 
-`templates/project-bootstrap/` includes starter `README` and `.gitignore` templates for new experiments.
-
-## Safety
-
-These tools only **read** (scan) or **move/archive** with explicit `--execute`. They never touch secrets, cloud accounts, or git history.
+`templates/project-bootstrap/` — starter `README` and `.gitignore` for new experiments.
 
 ## License
 

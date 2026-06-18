@@ -14,5 +14,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python3 -m py_compile machine_hygiene_scan.py
-      - run: bash -n forgeguard-scan.sh forgeguard-cleanup.sh
+      - run: python3 -m py_compile hygiene_scan.py
+      - run: bash -n hygiene-scan.sh hygiene-cleanup.sh

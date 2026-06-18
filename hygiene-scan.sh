@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# ForgeGuard monthly scan — flags orphans, no destructive actions
+# Quick hygiene scan — flags orphans, no destructive actions
 set -euo pipefail
 
-echo "=== ForgeGuard Scan $(date +%Y-%m-%d) ==="
+echo "=== Hygiene Scan $(date +%Y-%m-%d) ==="
 
 echo ""
 echo "-- Empty dirs (Documents, maxdepth 2) --"
@@ -29,7 +29,7 @@ if [ -d "$STAGING" ]; then
   sz=$(du -sm "$STAGING" | cut -f1)
   cnt=$(find "$STAGING" -maxdepth 1 -type d -name 'marketplace-upgrade-*' 2>/dev/null | wc -l | tr -d ' ')
   echo "Codex staging: ${sz}MB ($cnt dirs)"
-  [ "$sz" -gt 500 ] && echo "WARN: run forgeguard-cleanup.sh --execute"
+  [ "$sz" -gt 500 ] && echo "WARN: run ./hygiene-cleanup.sh --execute"
 fi
 
 echo ""

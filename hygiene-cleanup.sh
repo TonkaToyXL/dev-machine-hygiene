@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# ForgeGuard cleanup — archive-first, reversible
-# Usage: ./forgeguard-cleanup.sh           # dry-run
-#        ./forgeguard-cleanup.sh --execute
+# Hygiene cleanup — archive-first, reversible
+# Usage: ./hygiene-cleanup.sh           # dry-run
+#        ./hygiene-cleanup.sh --execute
 set -euo pipefail
 
 EXECUTE=false
 [[ "${1:-}" == "--execute" ]] && EXECUTE=true
 
-ARCHIVE="$HOME/Projects/Archive/$(date +%Y-%m)-forgeguard"
+ARCHIVE="$HOME/Projects/Archive/$(date +%Y-%m)-machine-hygiene"
 LOG_DIR="$ARCHIVE/logs"
 mkdir -p "$ARCHIVE"/{codex-tmp,orphan-venvs,empty-stubs,installers,dmgs,misc,logs} "$LOG_DIR"
 
@@ -19,7 +19,7 @@ run() {
   fi
 }
 
-echo "=== ForgeGuard Cleanup $(date) mode=$($EXECUTE && echo EXECUTE || echo DRY-RUN) ==="
+echo "=== Hygiene Cleanup $(date) mode=$($EXECUTE && echo EXECUTE || echo DRY-RUN) ==="
 
 # Codex marketplace staging
 if [ -d "$HOME/.codex/.tmp/marketplaces/.staging" ]; then
